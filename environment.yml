@@ -1,0 +1,15 @@
+name: TDR
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy
+  - pandas
+  - jupyterlab
+  - ipykernel
+  - ta-lib
+  - matplotlib
+  - pip
+  - pip:
+    - MetaTrader5
