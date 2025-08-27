@@ -186,7 +186,7 @@ def get_dataset(symbol, path_root, start="2000-01-01"):
     """
     
     # ======================
-    # 1. Processament D1 (Diari)
+    # 1. Processament D1
     # ======================
     data_D1 = load_data(symbol, "D1", path_root)
     
@@ -206,7 +206,7 @@ def get_dataset(symbol, path_root, start="2000-01-01"):
     
 
     # ======================
-    # 2. Processament H1 (Horari)
+    # 2. Processament H1
     # ====================== 
     data_H1 = load_data(symbol, "H1", path_root)
     
@@ -220,6 +220,7 @@ def get_dataset(symbol, path_root, start="2000-01-01"):
     # Calcular EMAs horàries
     data_H1 = (get_EMAs(data_H1)
               .rename(columns={
+                  'close': 'close_H1',
                   'ema18': 'ema18_H1',
                   'ema30': 'ema30_H1',
                   'ema200': 'ema200_H1'
@@ -233,7 +234,7 @@ def get_dataset(symbol, path_root, start="2000-01-01"):
     
     # Selecció final de columnes
     cols = [
-        'year', 'month', 'day', 'hour',
+        'year', 'month', 'day', 'hour', 'close_H1',
         'ema18_D1', 'ema30_D1', 'ema200_D1',  # Tendència diària
         'ema18_H1', 'ema30_H1', 'ema200_H1'   # Tendència horària
     ]
@@ -241,7 +242,7 @@ def get_dataset(symbol, path_root, start="2000-01-01"):
     
 
     # ======================
-    # 3. Processament M1 (Minutal)
+    # 3. Processament M1
     # ======================
     data_M1 = load_data(symbol, "M1", path_root)
     
